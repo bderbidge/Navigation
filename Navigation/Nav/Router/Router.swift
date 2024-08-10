@@ -55,12 +55,12 @@ class SwiftUIRouter<Navigation: NavigationDestinationView>: SwiftUIRouterR {
     
     func canRoute(navigationPathString: String) -> Bool {
         Navigation.routes.contains(where: {
-            $0.rawValue == navigationPathString
+            $0.path == navigationPathString
         })
     }
     
     func route(path: String) {
-        guard let route = Navigation.routes.first(where: { $0.rawValue == path }) else {
+        guard let route = Navigation.routes.first(where: { $0.path == path }) else {
             return
         }
         self.path.append(route)

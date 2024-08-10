@@ -46,7 +46,7 @@ class AppRouter: AppTabRouter {
     ///   - shouldUpdateUI: Whether to update the UI after navigating
     ///   - animated: Whether to animate the navigation
     public func route(navigationPath: some NavigationDestination, shouldPopToRoot: Bool = false, shouldUpdateUI: Bool = false, animated: Bool = true) {
-        let path = redirectPath(for: navigationPath.rawValue)
+        let path = redirectPath(for: navigationPath.path)
         executeRoute(path, animated: animated)
     }
     

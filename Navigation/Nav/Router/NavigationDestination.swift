@@ -11,9 +11,25 @@ import UIKit
 
 public protocol NavigationDestination: Equatable, Hashable, Identifiable {
     var rawValue: String { get }
+    var prefix: String { get }
+    var path: String { get }
+}
+
+extension NavigationDestination {
+    var path: String {
+        "\(self.prefix)/\(path)"
+    }
 }
 
 extension UIViewController: NavigationDestination {
+    public var prefix: String {
+     ""
+    }
+    
+    public var path: String {
+        ""
+    }
+    
     public var rawValue: String {
         ""
     }

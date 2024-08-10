@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 enum HomeRoutes: NavigationDestinationView {
+    var prefix: String {
+        "home"
+    }
+    
     static var routes: [HomeRoutes] = [.home, .stuff]
     
     case home
@@ -17,9 +21,9 @@ enum HomeRoutes: NavigationDestinationView {
     var rawValue: String {
         switch self {
         case .home:
-            "Homehome"
+            "home"
         case .stuff:
-            "Homestuff"
+            "stuff"
         }
     }
     
@@ -35,6 +39,10 @@ enum HomeRoutes: NavigationDestinationView {
 }
 
 enum AccountRoutes: NavigationDestinationView {
+    var prefix: String {
+        "account"
+    }
+    
     static var routes: [AccountRoutes] = [.home, .stuff]
     
     case home
@@ -43,9 +51,9 @@ enum AccountRoutes: NavigationDestinationView {
     var rawValue: String {
         switch self {
         case .home:
-            "Accounthome"
+            "home"
         case .stuff:
-            "Accountstuff"
+            "stuff"
         }
     }
     

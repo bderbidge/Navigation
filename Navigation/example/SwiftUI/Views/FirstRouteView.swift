@@ -21,7 +21,12 @@ struct FirstRouteView: CoordinatorView {
     @EnvironmentObject var appRouter: AppRouter
     
     var content: some View {
-        Text("Second")
+        VStack {
+            Text("Second")
+            Button("test change") {
+                viewModel.press()
+            }
+        }
     }
 }
 

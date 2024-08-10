@@ -26,7 +26,7 @@ class AppRouter: AppTabRouter {
     public init?(tabControllers: [any TabCoordinator]) {
         guard !tabControllers.isEmpty else { return nil }
         self.tabControllers = tabControllers
-        self.activeTabSubject = CurrentValueSubject(0)
+        self.activeTabSubject = CurrentValueSubject(1)
         self.activeTabPublisher = activeTabSubject.eraseToAnyPublisher()
     }
     
@@ -133,7 +133,7 @@ class AppRouter: AppTabRouter {
             $0.rawValue == tab.rawValue
         })
         if let index = index {
-            activeTabSubject.send(index)
+            activeTabSubject.send(index+1)
         }
     }
 }

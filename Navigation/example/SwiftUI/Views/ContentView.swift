@@ -38,7 +38,7 @@ struct ContentView: CoordinatorView {
     func start(output: ContentViewModel.Output) {
         switch output {
         case .detail:
-            router.route(navigationPath: .home("another home"))
+            router.route(navigationPath: .home)
         }
     }
 }

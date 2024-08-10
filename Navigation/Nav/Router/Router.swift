@@ -50,13 +50,20 @@ class SwiftUIRouter<Navigation: NavigationDestinationView>: SwiftUIRouterR {
     }
     
     func popToRoot() {
+        path.removeAll()
     }
     
     func canRoute(navigationPathString: String) -> Bool {
-        true
+        Navigation.routes.contains(where: {
+            $0.rawValue == navigationPathString
+        })
     }
     
     func route(path: String) {
+        guard let route = Navigation.routes.first(where: { $0.rawValue == path }) else {
+            return
+        }
+        self.path.append(route)
     }
 }
 

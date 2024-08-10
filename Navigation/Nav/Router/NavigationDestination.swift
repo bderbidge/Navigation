@@ -22,6 +22,7 @@ extension UIViewController: NavigationDestination {
 protocol NavigationDestinationView: NavigationDestination {
     associatedtype V: View
     var view: V { get }
+    static var routes: [Self] { get }
 }
 
 extension NavigationDestinationView {

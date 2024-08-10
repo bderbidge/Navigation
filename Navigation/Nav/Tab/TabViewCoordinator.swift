@@ -11,22 +11,23 @@ import Combine
 
 struct TabViewCoordinator<AppRouter: AppTabRouter>: View {
     @ObservedObject var appRouter: AppRouter
-    @State private var selectedTabID: Int?
+    @State private var selectedTabID = 1
 
     public var body: some View {
         TabView(selection: $selectedTabID) {
-            ForEach(appRouter.tabControllers, id: \.rawValue) { tab in
-                controllerBuilder(coordinator: tab)
+            ForEach(0..<appRouter.tabControllers.count, id: \.self) { index in
+                controllerBuilder(coordinator: appRouter.tabControllers[index], index: index+1)
+            }
+            .onReceive(appRouter.activeTabPublisher) { newActiveTab in
+                selectedTabID = newActiveTab
             }
         }
         .environmentObject(appRouter)
-        .onReceive(appRouter.activeTabPublisher) { newActiveTab in
-            selectedTabID = newActiveTab
-        }
+       
     }
     
     @ViewBuilder
-    func controllerBuilder(coordinator: any TabCoordinator) -> some View {
+    func controllerBuilder(coordinator: any TabCoordinator, index: Int) -> some View {
         Group {
             if let tabView = coordinator as? SwiftUITabCoordinator, let tabView = tabView.tabView {
                 AnyView(tabView) 
@@ -38,7 +39,7 @@ struct TabViewCoordinator<AppRouter: AppTabRouter>: View {
         }.tabItem {
             Label(coordinator.name, systemImage: coordinator.imageName)
         }
-        .tag(0)
+        .tag(index)
     }
 }
 

@@ -133,6 +133,7 @@
 				C9EB0E532C54406C00912878 /* Nav */,
 				C9EB0E4E2C54393A00912878 /* example */,
 				C910672A2C4DD7F800143261 /* Assets.xcassets */,
+				C91067262C4DD7F700143261 /* NavigationApp.swift */,
 				C910672C2C4DD7F800143261 /* Preview Content */,
 			);
 			path = Navigation;
@@ -204,7 +205,6 @@
 		C9EB0E4E2C54393A00912878 /* example */ = {
 			isa = PBXGroup;
 			children = (
-				C91067262C4DD7F700143261 /* NavigationApp.swift */,
 				C9EB0E4C2C4F6D7500912878 /* MainNavigationTab.swift */,
 				C9EB0E522C543CF800912878 /* UIKit */,
 				C9EB0E512C543CEA00912878 /* SwiftUI */,

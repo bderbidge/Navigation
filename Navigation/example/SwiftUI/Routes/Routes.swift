@@ -1,0 +1,55 @@
+//
+//  routes.swift
+//  Navigation
+//
+//  Created by Brandon Derbidge on 8/1/24.
+//
+
+import Foundation
+import SwiftUI
+
+enum HomeRoutes: NavigationDestinationView {
+    case home(String)
+    case stuff
+    
+    var rawValue: String {
+        switch self {
+        case .home:
+            "home"
+        case .stuff:
+            "stuff"
+        }
+    }
+    
+    var view: some View {
+        switch self {
+        case .home(let text):
+            Text(text)
+        case .stuff:
+            Text("Hey this is home stuff")
+        }
+    }
+}
+
+enum AccountRoutes: NavigationDestinationView {
+    case home(String)
+    case stuff
+    
+    var rawValue: String {
+        switch self {
+        case .home:
+            "home"
+        case .stuff:
+            "stuff"
+        }
+    }
+    
+    var view: some View {
+        switch self {
+        case .home(let text):
+            Text(text)
+        case .stuff:
+            Text("Hey This is account stuff")
+        }
+    }
+}

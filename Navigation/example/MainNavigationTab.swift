@@ -60,32 +60,15 @@ enum MainNavigationTab: TabCoordinator {
             router
         }
     }
-}
 
-extension MainNavigationTab: SwiftUITabCoordinator {
-    var tabView: (any TabCoordinatorView)? {
+    var tabView: NavType {
         switch self {
         case .home(let router):
-            TabCoordinatorViewImp(name: name, tabContent: ContentView(viewModel: .init()), router: router)
+                .swiftui(TabCoordinatorViewImp(name: name, tabContent: ContentView(viewModel: .init()), router: router))
         case .account(let router):
-            TabCoordinatorViewImp(name: name, tabContent: SecondTab(viewModel: .init()), router: router)
-        default:
-            nil
-        }
-    }
-}
-
-extension MainNavigationTab: UIKitTabCoordinator {
-    var router: UIKitRouter? {
-       navigationRouter as? UIKitRouter
-    }
-    
-    var tabCoordinator: (any SwiftUIToUIKitCoordinator)?{
-        switch self {
+                .swiftui(TabCoordinatorViewImp(name: name, tabContent: SecondTab(viewModel: .init()), router: router))
         case .content(let router):
-            ScreenCoordinator(router: router)
-        default:
-            nil
+                .uikit(ScreenCoordinator(router: router), router)
         }
     }
 }

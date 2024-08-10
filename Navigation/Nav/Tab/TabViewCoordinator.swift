@@ -29,12 +29,11 @@ struct TabViewCoordinator<AppRouter: AppTabRouter>: View {
     @ViewBuilder
     func controllerBuilder(coordinator: any TabCoordinator, index: Int) -> some View {
         Group {
-            if let tabView = coordinator as? SwiftUITabCoordinator, let tabView = tabView.tabView {
-                AnyView(tabView) 
-            } else if let uikit = coordinator as? UIKitTabCoordinator, let router = coordinator.navigationRouter as? UIKitRouter, let tabCoordinator = uikit.tabCoordinator {
-                HostingVCCoordinator(coordinator: tabCoordinator, router: router)
-            } else {
-                EmptyView()
+            switch coordinator.tabView {
+            case .swiftui(let tabCoordinatorView):
+                AnyView(tabCoordinatorView)
+            case .uikit(let swiftUIToUIKitCoordinator, let router):
+                HostingVCCoordinator(coordinator: swiftUIToUIKitCoordinator, router: router)
             }
         }.tabItem {
             Label(coordinator.name, systemImage: coordinator.imageName)

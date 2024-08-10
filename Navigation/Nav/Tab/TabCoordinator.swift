@@ -15,13 +15,11 @@ protocol TabCoordinator {
     var imageName: String { get }
     var navigationRouter: any Router { get }
     static var tabs: [Self] { get }
+    var tabView: NavType { get }
 }
 
-protocol SwiftUITabCoordinator: TabCoordinator {
-    var tabView: (any TabCoordinatorView)? { get }
+enum NavType {
+    case swiftui(any TabCoordinatorView)
+    case uikit(any SwiftUIToUIKitCoordinator, UIKitRouter)
 }
 
-protocol UIKitTabCoordinator: TabCoordinator {
-    var tabCoordinator: (any SwiftUIToUIKitCoordinator)?{ get }
-    var router: UIKitRouter? { get }
-}

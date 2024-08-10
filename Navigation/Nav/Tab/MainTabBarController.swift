@@ -56,18 +56,19 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         var viewcontrollers = [UIViewController]()
         for index in viewModel.tabs.indices {
-            let coordinator = viewModel.tabs[index]
-            if let tab = coordinator as? SwiftUITabCoordinator, let view = tab.tabView {
-                let vc = UIHostingController(rootView: AnyView(view))
+            let tab = viewModel.tabs[index]
+            
+            switch tab.tabView {
+            case .swiftui(let tabCoordinatorView):
+                let vc = UIHostingController(rootView: AnyView(tabCoordinatorView))
                 vc.tabBarItem = UITabBarItem(title: tab.name, image: UIImage(systemName: tab.imageName), tag: index)
                 viewcontrollers.append(vc)
-            } else if let tab = coordinator as? UIKitTabCoordinator, let router = tab.router, let coordinator = tab.tabCoordinator {
-                let vc = UINavigationController(rootViewController: coordinator.start())
+            case .uikit(let swiftUIToUIKitCoordinator, let router):
+                let vc = UINavigationController(rootViewController: swiftUIToUIKitCoordinator.start())
                 router.navigationController = vc
                 vc.tabBarItem = UITabBarItem(title: tab.name, image: UIImage(systemName: tab.imageName), tag: index)
                 viewcontrollers.append(vc)
             }
-           
         }
         viewControllers = viewcontrollers
         viewModel.activeTabPublisher.sink {[weak self] value in

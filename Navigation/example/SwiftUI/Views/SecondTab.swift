@@ -8,14 +8,16 @@
 import Foundation
 import SwiftUI
 
-struct SecondTab: CoordinatorView {
-    func start(output: ContentViewModel.Output) {
-    }
-    
+struct SecondTab: NavigationStackView {
+
     @ObservedObject var viewModel: ContentViewModel
-    @EnvironmentObject var router: SwiftUIRouter<AccountRoutes>
+    @ObservedObject var router: SwiftUIRouter<AccountRoutes>
+    var name: String
     
     var content: some View {
         Text("Second")
+    }
+    
+    func start(output: ContentViewModel.Output) {
     }
 }

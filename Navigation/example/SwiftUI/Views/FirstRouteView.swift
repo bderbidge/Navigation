@@ -8,6 +8,31 @@
 import Foundation
 import SwiftUI
 
+struct DependencyContainer: Equatable, Hashable {
+}
+
+extension FirstRouteView {
+    class ViewModel : ViewModelNavigation {
+        var container: DependencyContainer
+        init(container: DependencyContainer) {
+            self.container = container
+        }
+        
+        enum Output: CoordinatorOutput {
+            case detail
+        }
+        
+        @Published var output: Output?
+        var coordinatorOutput: Published<Output?>.Publisher {
+            $output
+        }
+        
+        func press()  {
+            output = .detail
+        }
+    }
+}
+
 struct FirstRouteView: CoordinatorView {
     func start(output: ViewModel.Output) {
         switch output {
@@ -26,23 +51,6 @@ struct FirstRouteView: CoordinatorView {
             Button("test change") {
                 viewModel.press()
             }
-        }
-    }
-}
-
-extension FirstRouteView {
-    class ViewModel : ViewModelNavigation {
-        enum Output: CoordinatorOutput {
-            case detail
-        }
-        
-        @Published var output: Output?
-        var coordinatorOutput: Published<Output?>.Publisher {
-            $output
-        }
-        
-        func press()  {
-            output = .detail
         }
     }
 }

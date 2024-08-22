@@ -22,9 +22,12 @@ class ContentViewModel: ViewModelNavigation {
     }
 }
 
-struct ContentView: CoordinatorView {
+struct ContentView: NavigationStackView {
+    
     @ObservedObject var viewModel: ContentViewModel
-    @EnvironmentObject var router: SwiftUIRouter<HomeRoutes>
+    @ObservedObject var router: SwiftUIRouter<HomeRoutes>
+    var name: String
+    var container = DependencyContainer()
     
     var content: some View {
         VStack {
@@ -38,7 +41,7 @@ struct ContentView: CoordinatorView {
     func start(output: ContentViewModel.Output) {
         switch output {
         case .detail:
-            router.route(navigationPath: .home)
+            router.route(navigationPath: .home(container))
         }
     }
 }

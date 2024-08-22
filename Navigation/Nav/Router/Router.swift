@@ -10,6 +10,9 @@ import UIKit
 import SwiftUI
 import Combine
 
+protocol RouterContainer {
+}
+
 protocol Router {
     associatedtype Nav: NavigationDestination
     func redirectPath(for navigationPath: Nav) -> String?
@@ -27,6 +30,12 @@ protocol SwiftUIRouterR: Router, ObservableObject {
 }
 
 class SwiftUIRouter<Navigation: NavigationDestinationView>: SwiftUIRouterR {
+    let registeredRoutes: [String: Navigation]
+    
+    init(container: RouterContainer) {
+        let registerdRoutes = Navigation.routes(container: container)
+        self.registeredRoutes = Dictionary(uniqueKeysWithValues: registerdRoutes.map{ ($0.path, $0) })
+    }
     
     @Published var path = [Navigation]()
     var pathPublisher: Published<[Navigation]>.Publisher {
@@ -38,7 +47,7 @@ class SwiftUIRouter<Navigation: NavigationDestinationView>: SwiftUIRouterR {
     }
     
     func canRoute(navigationPath: Navigation) -> Bool {
-        true
+        (registeredRoutes[navigationPath.path] != nil)
     }
     
     func route(navigationPath: Navigation) {
@@ -54,13 +63,11 @@ class SwiftUIRouter<Navigation: NavigationDestinationView>: SwiftUIRouterR {
     }
     
     func canRoute(navigationPathString: String) -> Bool {
-        Navigation.routes.contains(where: {
-            $0.path == navigationPathString
-        })
+        (registeredRoutes[navigationPathString] != nil)
     }
     
     func route(path: String) {
-        guard let route = Navigation.routes.first(where: { $0.path == path }) else {
+        guard let route = registeredRoutes[path] else {
             return
         }
         self.path.append(route)

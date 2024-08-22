@@ -24,8 +24,10 @@
 		C91067632C4F167200143261 /* TabViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91067622C4F167200143261 /* TabViewContainer.swift */; };
 		C91067692C4F626200143261 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91067682C4F626200143261 /* AppRouter.swift */; };
 		C96F59B62C674F9400775698 /* FirstRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59B52C674F9400775698 /* FirstRouteView.swift */; };
-		C99AA8652C6727060070864D /* TabCoordinatorViewImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA8642C6727060070864D /* TabCoordinatorViewImp.swift */; };
-		C99AA8672C6727A40070864D /* TabCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA8662C6727A40070864D /* TabCoordinatorView.swift */; };
+		C96F59C82C77146A00775698 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59C72C77146A00775698 /* CoordinatorView.swift */; };
+		C96F59CA2C77148D00775698 /* HostingVCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59C92C77148D00775698 /* HostingVCCoordinator.swift */; };
+		C99AA8652C6727060070864D /* NavStackWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA8642C6727060070864D /* NavStackWrapper.swift */; };
+		C99AA8672C6727A40070864D /* NavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA8662C6727A40070864D /* NavigationStackView.swift */; };
 		C9EB0E4D2C4F6D7500912878 /* MainNavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB0E4C2C4F6D7500912878 /* MainNavigationTab.swift */; };
 		C9EB0E562C5CA04600912878 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB0E552C5CA04600912878 /* MyViewController.swift */; };
 		C9EB0E582C5CA14400912878 /* ScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB0E572C5CA14400912878 /* ScreenCoordinator.swift */; };
@@ -72,8 +74,10 @@
 		C91067622C4F167200143261 /* TabViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewContainer.swift; sourceTree = "<group>"; };
 		C91067682C4F626200143261 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		C96F59B52C674F9400775698 /* FirstRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRouteView.swift; sourceTree = "<group>"; };
-		C99AA8642C6727060070864D /* TabCoordinatorViewImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorViewImp.swift; sourceTree = "<group>"; };
-		C99AA8662C6727A40070864D /* TabCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorView.swift; sourceTree = "<group>"; };
+		C96F59C72C77146A00775698 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
+		C96F59C92C77148D00775698 /* HostingVCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingVCCoordinator.swift; sourceTree = "<group>"; };
+		C99AA8642C6727060070864D /* NavStackWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackWrapper.swift; sourceTree = "<group>"; };
+		C99AA8662C6727A40070864D /* NavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackView.swift; sourceTree = "<group>"; };
 		C9EB0E4C2C4F6D7500912878 /* MainNavigationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationTab.swift; sourceTree = "<group>"; };
 		C9EB0E552C5CA04600912878 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		C9EB0E572C5CA14400912878 /* ScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCoordinator.swift; sourceTree = "<group>"; };
@@ -178,7 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				C91067542C4EF64500143261 /* Coordinator.swift */,
-				C99AA8662C6727A40070864D /* TabCoordinatorView.swift */,
+				C99AA8642C6727060070864D /* NavStackWrapper.swift */,
+				C99AA8662C6727A40070864D /* NavigationStackView.swift */,
+				C96F59C72C77146A00775698 /* CoordinatorView.swift */,
+				C96F59C92C77148D00775698 /* HostingVCCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -189,7 +196,6 @@
 				C9EB0E5F2C6194BA00912878 /* MainTabBarController.swift */,
 				C910675E2C4EFAB800143261 /* TabViewCoordinator.swift */,
 				C91067502C4EF1BF00143261 /* TabCoordinator.swift */,
-				C99AA8642C6727060070864D /* TabCoordinatorViewImp.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -392,11 +398,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C910675D2C4EF70E00143261 /* Router.swift in Sources */,
-				C99AA8672C6727A40070864D /* TabCoordinatorView.swift in Sources */,
+				C96F59C82C77146A00775698 /* CoordinatorView.swift in Sources */,
+				C99AA8672C6727A40070864D /* NavigationStackView.swift in Sources */,
 				C91067592C4EF6CF00143261 /* ViewModelNavigation.swift in Sources */,
 				C910675B2C4EF6F900143261 /* NavigationDestination.swift in Sources */,
 				C91067532C4EF23600143261 /* AppTabRouter.swift in Sources */,
-				C99AA8652C6727060070864D /* TabCoordinatorViewImp.swift in Sources */,
+				C99AA8652C6727060070864D /* NavStackWrapper.swift in Sources */,
 				C9EB0E582C5CA14400912878 /* ScreenCoordinator.swift in Sources */,
 				C91067512C4EF1C000143261 /* TabCoordinator.swift in Sources */,
 				C9EB0E4D2C4F6D7500912878 /* MainNavigationTab.swift in Sources */,
@@ -408,6 +415,7 @@
 				C9EB0E562C5CA04600912878 /* MyViewController.swift in Sources */,
 				C9EB0E5A2C5CA2B500912878 /* SecondTab.swift in Sources */,
 				C910675F2C4EFAB800143261 /* TabViewCoordinator.swift in Sources */,
+				C96F59CA2C77148D00775698 /* HostingVCCoordinator.swift in Sources */,
 				C91067292C4DD7F700143261 /* ContentView.swift in Sources */,
 				C91067272C4DD7F700143261 /* NavigationApp.swift in Sources */,
 				C9EB0E602C6194BA00912878 /* MainTabBarController.swift in Sources */,

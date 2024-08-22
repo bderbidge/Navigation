@@ -9,13 +9,17 @@ import Foundation
 import SwiftUI
 
 enum HomeRoutes: NavigationDestinationView {
+    static func routes(container: any RouterContainer) -> [HomeRoutes] {
+        guard let depContainer = container as? NavAppContainer else { return [] }
+        return [.home(depContainer.dependencyContainer), .stuff]
+    }
+    
+
     var prefix: String {
         "home"
     }
     
-    static var routes: [HomeRoutes] = [.home, .stuff]
-    
-    case home
+    case home(DependencyContainer)
     case stuff
     
     var rawValue: String {
@@ -30,8 +34,8 @@ enum HomeRoutes: NavigationDestinationView {
     @ViewBuilder
     var view: some View {
         switch self {
-        case .home:
-            FirstRouteView(viewModel: .init())
+        case .home(let container):
+            FirstRouteView(viewModel: .init(container: container))
         case .stuff:
             Text("Hey this is home stuff")
         }
@@ -39,11 +43,13 @@ enum HomeRoutes: NavigationDestinationView {
 }
 
 enum AccountRoutes: NavigationDestinationView {
+    static func routes(container: any RouterContainer) -> [AccountRoutes] {
+        [.home, .stuff]
+    }
+    
     var prefix: String {
         "account"
     }
-    
-    static var routes: [AccountRoutes] = [.home, .stuff]
     
     case home
     case stuff

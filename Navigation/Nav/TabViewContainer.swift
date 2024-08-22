@@ -9,14 +9,15 @@ import Foundation
 import SwiftUI
 
 struct TabViewContainer<Tabs: TabCoordinator>: View {
-    let isSwiftui: Bool
+    let isUiKit: Bool
+    let container: RouterContainer
     var body: some View {
         Group {
-            if let router = AppRouter(tabControllers: Tabs.tabs) {
-                if isSwiftui {
-                    TabViewCoordinator(appRouter: router)
-                } else {
+            if let router = AppRouter(tabControllers: Tabs.tabs(container: container)) {
+                if isUiKit {
                     MainTabBarView(appRouter: router)
+                } else {
+                    TabViewCoordinator(appRouter: router)
                 }
             } else {
                 ProgressView()

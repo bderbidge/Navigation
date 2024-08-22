@@ -13,8 +13,8 @@ enum MainNavigationTab: TabCoordinator {
     case account(SwiftUIRouter<AccountRoutes>)
     case content(UIKitRouter)
     
-    static var tabs: [MainNavigationTab] {
-        [.home(SwiftUIRouter<HomeRoutes>()), .account(SwiftUIRouter<AccountRoutes>()), .content(UIKitRouter())]
+    static func tabs(container: RouterContainer) -> [MainNavigationTab] {
+        [.home(SwiftUIRouter<HomeRoutes>(container: container)), .account(SwiftUIRouter<AccountRoutes>(container: container)), .content(UIKitRouter())]
     }
     
     var rawValue: String {
@@ -46,7 +46,7 @@ enum MainNavigationTab: TabCoordinator {
         case .account:
             "person"
         case .content:
-            "content"
+            "book"
         }
     }
     
@@ -64,9 +64,9 @@ enum MainNavigationTab: TabCoordinator {
     var tabView: NavType {
         switch self {
         case .home(let router):
-                .swiftui(TabCoordinatorViewImp(name: name, tabContent: ContentView(viewModel: .init()), router: router))
+                .swiftui(ContentView( viewModel: .init(), router: router, name: name))
         case .account(let router):
-                .swiftui(TabCoordinatorViewImp(name: name, tabContent: SecondTab(viewModel: .init()), router: router))
+                .swiftui(SecondTab(viewModel: .init(), router: router, name: name))
         case .content(let router):
                 .uikit(ScreenCoordinator(router: router), router)
         }

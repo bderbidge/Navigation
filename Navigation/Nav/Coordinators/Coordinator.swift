@@ -18,8 +18,3 @@ protocol Coordinator {
 extension Coordinator {
     func start() {}
 }
-
-protocol BaseCoordinatorView: View, Coordinator  {
-    associatedtype Router: SwiftUIRouterR
-    var router: Router { get }
-}

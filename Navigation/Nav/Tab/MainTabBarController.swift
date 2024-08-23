@@ -11,8 +11,8 @@ import Combine
 import SwiftUI
 
 class MainTabBarViewModel {
-    private let appRouter: AppRouter
-    init(appRouter: AppRouter) {
+    private let appRouter: any AppTabRouter
+    init(appRouter: some AppTabRouter) {
         self.appRouter = appRouter
     }
     
@@ -26,7 +26,7 @@ class MainTabBarViewModel {
 }
 
 struct MainTabBarView: UIViewControllerRepresentable {
-    let appRouter: AppRouter
+    let appRouter: any AppTabRouter
     
     func makeUIViewController(context: Context) -> UIViewController {
         let vc = MainTabBarController(viewModel: .init(appRouter: appRouter))

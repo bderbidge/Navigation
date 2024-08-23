@@ -17,8 +17,8 @@ extension NavigationStackView {
         Group {
             NavStackWrapper(router: router, name: name) {
                 coordinatorView
+                    .environmentObject(router)
             }
-            .environmentObject(router)
         }
     }
     

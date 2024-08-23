@@ -41,7 +41,7 @@ struct ContentView: NavigationStackView {
     func start(output: ContentViewModel.Output) {
         switch output {
         case .detail:
-            router.route(navigationPath: .home(container))
+            router.route(navigationPath: .home(container, router))
         }
     }
 }

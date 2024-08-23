@@ -24,16 +24,11 @@ protocol Router {
     func route(path: String)
 }
 
-protocol SwiftUIRouterR: Router, ObservableObject {
-    associatedtype Navigation: NavigationDestinationView
-    var pathPublisher: Published<[Navigation]>.Publisher { get }
-}
-
-class SwiftUIRouter<Navigation: NavigationDestinationView>: SwiftUIRouterR {
-    let registeredRoutes: [String: Navigation]
+class SwiftUIRouter<Navigation: NavigationDestinationView>: Router, ObservableObject {
+    var registeredRoutes: [String: Navigation] = [:]
     
     init(container: RouterContainer) {
-        let registerdRoutes = Navigation.routes(container: container)
+        let registerdRoutes = Navigation.routes(container: container, router: self)
         self.registeredRoutes = Dictionary(uniqueKeysWithValues: registerdRoutes.map{ ($0.path, $0) })
     }
     

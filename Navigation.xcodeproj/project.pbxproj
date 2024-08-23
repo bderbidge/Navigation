@@ -26,6 +26,10 @@
 		C96F59B62C674F9400775698 /* FirstRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59B52C674F9400775698 /* FirstRouteView.swift */; };
 		C96F59C82C77146A00775698 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59C72C77146A00775698 /* CoordinatorView.swift */; };
 		C96F59CA2C77148D00775698 /* HostingVCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59C92C77148D00775698 /* HostingVCCoordinator.swift */; };
+		C96F59CE2C78283000775698 /* SecondRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59CD2C78283000775698 /* SecondRouteView.swift */; };
+		C96F59D22C7829A800775698 /* SecondTabFirstRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59D12C7829A800775698 /* SecondTabFirstRoute.swift */; };
+		C96F59D42C7829DC00775698 /* StuffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59D32C7829DC00775698 /* StuffView.swift */; };
+		C96F59D62C78342D00775698 /* ThirdRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96F59D52C78342D00775698 /* ThirdRouteView.swift */; };
 		C99AA8652C6727060070864D /* NavStackWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA8642C6727060070864D /* NavStackWrapper.swift */; };
 		C99AA8672C6727A40070864D /* NavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AA8662C6727A40070864D /* NavigationStackView.swift */; };
 		C9EB0E4D2C4F6D7500912878 /* MainNavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB0E4C2C4F6D7500912878 /* MainNavigationTab.swift */; };
@@ -76,6 +80,10 @@
 		C96F59B52C674F9400775698 /* FirstRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRouteView.swift; sourceTree = "<group>"; };
 		C96F59C72C77146A00775698 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		C96F59C92C77148D00775698 /* HostingVCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingVCCoordinator.swift; sourceTree = "<group>"; };
+		C96F59CD2C78283000775698 /* SecondRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondRouteView.swift; sourceTree = "<group>"; };
+		C96F59D12C7829A800775698 /* SecondTabFirstRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabFirstRoute.swift; sourceTree = "<group>"; };
+		C96F59D32C7829DC00775698 /* StuffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffView.swift; sourceTree = "<group>"; };
+		C96F59D52C78342D00775698 /* ThirdRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdRouteView.swift; sourceTree = "<group>"; };
 		C99AA8642C6727060070864D /* NavStackWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackWrapper.swift; sourceTree = "<group>"; };
 		C99AA8662C6727A40070864D /* NavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackView.swift; sourceTree = "<group>"; };
 		C9EB0E4C2C4F6D7500912878 /* MainNavigationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationTab.swift; sourceTree = "<group>"; };
@@ -137,7 +145,6 @@
 				C9EB0E532C54406C00912878 /* Nav */,
 				C9EB0E4E2C54393A00912878 /* example */,
 				C910672A2C4DD7F800143261 /* Assets.xcassets */,
-				C91067262C4DD7F700143261 /* NavigationApp.swift */,
 				C910672C2C4DD7F800143261 /* Preview Content */,
 			);
 			path = Navigation;
@@ -208,12 +215,50 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C96F59CB2C7827CF00775698 /* First Tab */ = {
+			isa = PBXGroup;
+			children = (
+				C96F59CF2C78298200775698 /* Routes */,
+				C91067282C4DD7F700143261 /* ContentView.swift */,
+			);
+			path = "First Tab";
+			sourceTree = "<group>";
+		};
+		C96F59CC2C7827E400775698 /* Second Tab */ = {
+			isa = PBXGroup;
+			children = (
+				C96F59D02C78298C00775698 /* Routes */,
+				C9EB0E592C5CA2B500912878 /* SecondTab.swift */,
+			);
+			path = "Second Tab";
+			sourceTree = "<group>";
+		};
+		C96F59CF2C78298200775698 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				C96F59CD2C78283000775698 /* SecondRouteView.swift */,
+				C96F59B52C674F9400775698 /* FirstRouteView.swift */,
+				C96F59D52C78342D00775698 /* ThirdRouteView.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		C96F59D02C78298C00775698 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				C96F59D12C7829A800775698 /* SecondTabFirstRoute.swift */,
+				C96F59D32C7829DC00775698 /* StuffView.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
 		C9EB0E4E2C54393A00912878 /* example */ = {
 			isa = PBXGroup;
 			children = (
+				C91067262C4DD7F700143261 /* NavigationApp.swift */,
 				C9EB0E4C2C4F6D7500912878 /* MainNavigationTab.swift */,
-				C9EB0E522C543CF800912878 /* UIKit */,
 				C9EB0E512C543CEA00912878 /* SwiftUI */,
+				C9EB0E522C543CF800912878 /* UIKit */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -260,9 +305,8 @@
 		C9EB0E5E2C609B1A00912878 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C91067282C4DD7F700143261 /* ContentView.swift */,
-				C9EB0E592C5CA2B500912878 /* SecondTab.swift */,
-				C96F59B52C674F9400775698 /* FirstRouteView.swift */,
+				C96F59CC2C7827E400775698 /* Second Tab */,
+				C96F59CB2C7827CF00775698 /* First Tab */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,15 +445,19 @@
 				C96F59C82C77146A00775698 /* CoordinatorView.swift in Sources */,
 				C99AA8672C6727A40070864D /* NavigationStackView.swift in Sources */,
 				C91067592C4EF6CF00143261 /* ViewModelNavigation.swift in Sources */,
+				C96F59D62C78342D00775698 /* ThirdRouteView.swift in Sources */,
 				C910675B2C4EF6F900143261 /* NavigationDestination.swift in Sources */,
 				C91067532C4EF23600143261 /* AppTabRouter.swift in Sources */,
 				C99AA8652C6727060070864D /* NavStackWrapper.swift in Sources */,
+				C96F59D42C7829DC00775698 /* StuffView.swift in Sources */,
 				C9EB0E582C5CA14400912878 /* ScreenCoordinator.swift in Sources */,
 				C91067512C4EF1C000143261 /* TabCoordinator.swift in Sources */,
 				C9EB0E4D2C4F6D7500912878 /* MainNavigationTab.swift in Sources */,
+				C96F59CE2C78283000775698 /* SecondRouteView.swift in Sources */,
 				C96F59B62C674F9400775698 /* FirstRouteView.swift in Sources */,
 				C91067552C4EF64500143261 /* Coordinator.swift in Sources */,
 				C91067632C4F167200143261 /* TabViewContainer.swift in Sources */,
+				C96F59D22C7829A800775698 /* SecondTabFirstRoute.swift in Sources */,
 				C9EB0E5D2C5CA2F400912878 /* Routes.swift in Sources */,
 				C91067692C4F626200143261 /* AppRouter.swift in Sources */,
 				C9EB0E562C5CA04600912878 /* MyViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-protocol CoordinatorView: BaseCoordinatorView where Router == SwiftUIRouter<Navigation> {
+protocol CoordinatorView: View, Coordinator {
     associatedtype Navigation: NavigationDestinationView
     var router: SwiftUIRouter<Navigation> { get }
     
@@ -32,9 +32,6 @@ extension CoordinatorView {
         .onReceive(viewModel.coordinatorOutput) { output in
             guard let output = output else { return }
             start(output: output)
-        }
-        .navigationDestination(for: Navigation.self) { value in
-            value.view
         }
     }
 }

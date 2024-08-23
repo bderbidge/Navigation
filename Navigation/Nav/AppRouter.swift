@@ -23,8 +23,7 @@ class AppRouter: AppTabRouter {
     /// Initializes the router with the given tab controllers
     ///
     /// - Parameter tabControllers: The tab controllers to use in the app
-    public init?(tabControllers: [any TabCoordinator]) {
-        guard !tabControllers.isEmpty else { return nil }
+    public init(tabControllers: [any TabCoordinator]) {
         self.tabControllers = tabControllers
         self.activeTabSubject = CurrentValueSubject(1)
         self.activeTabPublisher = activeTabSubject.eraseToAnyPublisher()
@@ -47,7 +46,7 @@ class AppRouter: AppTabRouter {
     ///   - animated: Whether to animate the navigation
     public func route(navigationPath: some NavigationDestination, shouldPopToRoot: Bool = false, shouldUpdateUI: Bool = false, animated: Bool = true) {
         let path = redirectPath(for: navigationPath.path)
-        executeRoute(path, animated: animated)
+        executeRoute(path, popToRoot: shouldPopToRoot, animated: animated)
     }
     
     /// Follows redirects for the given path up to a maximum number of times

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-public protocol NavigationDestination: Equatable, Hashable, Identifiable {
+public protocol NavigationDestination: Hashable {
     var rawValue: String { get }
     var prefix: String { get }
     var path: String { get }
@@ -18,6 +18,14 @@ public protocol NavigationDestination: Equatable, Hashable, Identifiable {
 extension NavigationDestination {
     var path: String {
         "\(self.prefix)/\(rawValue)"
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.rawValue == rhs.rawValue
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(self.rawValue)
     }
 }
 
@@ -37,8 +45,8 @@ extension UIViewController: NavigationDestination {
 
 protocol NavigationDestinationView: NavigationDestination {
     associatedtype V: View
-    var view: V { get }
-    static func routes(container: RouterContainer) -> [Self]
+    @ViewBuilder var view: V { get }
+    static func routes(container: RouterContainer, router: SwiftUIRouter<Self>) -> [Self]
 }
 
 extension NavigationDestinationView {

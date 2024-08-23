@@ -15,8 +15,12 @@ struct NavStackWrapper<Navigation: NavigationDestinationView, Content: View>: Vi
 
     var body: some View {
         NavigationStack(path: $router.path) {
-            content
-                .navigationTitle(name)
+            Group {
+                content
+                    .navigationTitle(name)
+            }.navigationDestination(for: Navigation.self) { value in
+                value.view
+            }
         }
     }
 }

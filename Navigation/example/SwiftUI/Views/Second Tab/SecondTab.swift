@@ -15,9 +15,15 @@ struct SecondTab: NavigationStackView {
     var name: String
     
     var content: some View {
-        Text("Second")
+        VStack {
+            Text("Second")
+            Button("Navigate") {
+                viewModel.press()
+            }
+        }
     }
     
     func start(output: ContentViewModel.Output) {
+        router.route(navigationPath: .stuff(router))
     }
 }
